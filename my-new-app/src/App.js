@@ -1,25 +1,18 @@
 import './App.css';
+import styled from 'styled-components'
+import StyledButton from './components/Button/Button'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-let count = 0
 
 
 function App() {
   
-  count++
+
   return (
     <div className= "App">
-      count = {count}
-      <button onClick={()=> {
-        count++}}> "click me"</button>
-   
+      <StyledButton>Heeeeey</StyledButton>
    </div>
   );
  
 }
-
-console.log(App())
-console.log(App())
-console.log(App())
 
 export default App;
