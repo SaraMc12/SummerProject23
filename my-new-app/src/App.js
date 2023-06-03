@@ -1,52 +1,25 @@
 import './App.css';
 import styled from 'styled-components'
+import { useEffect, useState } from 'react';
 import StyledButton from './components/Button'
-import { useState } from 'react';
+import NewTable from './components/NewTable'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 
 
 function App() {
-  const [rows, setRows] = useState(Users);
-  const Users = [
-    {firstName: 'John', lastName: 'Smith', email: 'john@example.com'},
-    {firstName: 'Hendrix', lastName: 'Powers', email: 'HPowers@example.com'},
-    {firstName: 'Sloane', lastName: 'Ventura', email: 'SoanVen@example.com'},
-    {firstName: 'Pippa', lastName: 'Powers', email: 'Ppowers@example.com'},
-    {firstName: 'Kathrine', lastName: 'Levine', email: 'Klevinn@example.com'}
-  ]
-
-  const Row = (props)=>{
-    const {firstName, lastName, email} = props
-    return(<tr>
-        <td>{firstName}</td>
-        <td>{lastName}</td>
-        <td>{email}</td>
-        </tr>)
-  }
-
-  const Table = (props)=>{
-    const {data}=props
-    return(<table>
-    <tbody>{data.map(row =>
-           <Row firstName={row.firstName}
-           lastName={row.lastName}
-           email={row.email}/>
-        )}</tbody>
-    </table>)
-  }
-
-  
+  const [dataTable, setDataTable] = useState([])
+  console.log(dataTable)
+  // get request for api
+  fetch('https://jsonplaceholder.typicode.com/users/')
+      .then(response => response.json(setDataTable.dataTable))
+      .then(json => console.log(dataTable, json))
 
   return (
     <div className= "App">
-      <StyledButton>Heeeeey</StyledButton>
-      <Table data={rows}/>
-      
-
-
-  
+      <StyledButton>Heeeeey</StyledButton> 
+      <NewTable />
    </div>
   );
  

@@ -22,22 +22,21 @@ const Users = [
   const Row = (props)=>{
     const {data}=props
     return(
-        <table>
-            <tbody>{data.map(row =>{
+    <table>
+        <tbody>{data.map(row =>{
                <Row firstName={row.firstName}
                lastName={row.lastName}
                email={row.email}/>
             })}</tbody>
         </table>
-    )
-
-  }
+     
+ ) }
 
 export default function Table() {
     const [user, setUsers] = useState(Users);
   return (
     <div>
-
+        <Table dara={rows}/>
     </div>
   )
 }
