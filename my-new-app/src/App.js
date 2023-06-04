@@ -1,28 +1,38 @@
-import './App.css';
 import styled from 'styled-components'
-import { useEffect, useState } from 'react';
+import { useState, useEffect} from 'react';
 import StyledButton from './components/Button'
-import NewTable from './components/NewTable'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+const App = () => {
+  const [users, setUsers] = useState([])
 
+  const fetchUserData = () => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        setUsers(data)
+      })
+  }
 
-
-function App() {
-  const [dataTable, setDataTable] = useState([])
-  console.log(dataTable)
-  // get request for api
-  fetch('https://jsonplaceholder.typicode.com/users/')
-      .then(response => response.json(setDataTable.dataTable))
-      .then(json => console.log(dataTable, json))
+  useEffect(() => {
+    fetchUserData()
+  }, [])
 
   return (
-    <div className= "App">
-      <StyledButton>Heeeeey</StyledButton> 
-      <NewTable />
-   </div>
+    <div>
+       <StyledButton>Heeeeey</StyledButton> 
+      {users.length > 0 && (
+        <ul>
+          {users.map(user => (
+            <li key={user.id}>{user.name}</li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
- 
 }
+
 
 export default App;

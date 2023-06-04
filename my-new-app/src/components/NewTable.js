@@ -1,17 +1,30 @@
 import React from 'react'
 
-// const Users = [
-//     {firstName: 'John', lastName: 'Smith', email: 'john@example.com'},
-//     {firstName: 'Hendrix', lastName: 'Powers', email: 'HPowers@example.com'},
-//     {firstName: 'Sloane', lastName: 'Ventura', email: 'SoanVen@example.com'},
-//     {firstName: 'Pippa', lastName: 'Powers', email: 'Ppowers@example.com'},
-//     {firstName: 'Kathrine', lastName: 'Levine', email: 'Klevinn@example.com'}
-//   ]
 
-export default function NewTable() {
+
+ function NewTable(data, column) {
+    
   return (
     <div>
-        New Table
+       <thead>
+        <tr>
+            {column.map((item,index) => <TableHeadItem item={item}/>)}
+            </tr>
+       </thead>
+       <tbody>
+        <tr>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Phone</td>
+        </tr>
+        </tbody>
+       
     </div>
   )
 }
+
+const TableHeadItem = ({item})=><th>{item.heading}</th>
+       
+export default NewTable;
+
+ 
